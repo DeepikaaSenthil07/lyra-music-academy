@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lyra Academy | Find Your Course</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="brand-bar">
+  <div class="brand-inner">
+    <h1>Lyra Academy</h1>
+    <p>Let the music live through you…</p>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="courses.html">Courses</a>
+        <a href="faculty.html">Faculty</a>
+        <a href="timetable.html">Timetable</a>
+        <a class="active" href="quiz.html">Find My Course</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="quiz-section">
+  <h2>Find Your Perfect Course</h2>
+  <p class="subtitle">Answer three simple questions and we'll recommend the right level and instrument for you.</p>
+
+  <!-- Progress bar -->
+  <div class="progress-bar-wrap">
+    <div class="progress-bar-fill" id="progressBar" style="width: 0%"></div>
+  </div>
+
+  <!-- Question 1: Experience -->
+  <div class="quiz-card active" id="q1">
+    <p class="question-label">Question 1 of 3</p>
+    <h3>What best describes your music experience so far?</h3>
+    <div class="options">
+      <button class="option-btn" onclick="selectOption(this, 'exp', 'none')">
+        <span class="option-icon">🌱</span>
+        <span>I have never formally learned music before</span>
+      </button>
+      <button class="option-btn" onclick="selectOption(this, 'exp', 'some')">
+        <span class="option-icon">🎵</span>
+        <span>I have learned a little, basics or informal lessons</span>
+      </button>
+      <button class="option-btn" onclick="selectOption(this, 'exp', 'trained')">
+        <span class="option-icon">🎓</span>
+        <span>I have completed structured training before</span>
+      </button>
+    </div>
+    <div class="quiz-nav">
+      <button class="nav-btn back" disabled>← Back</button>
+      <button class="nav-btn next" id="next1" onclick="nextQuestion(1)" disabled>Next →</button>
+    </div>
+  </div>
+
+  <!-- Question 2: Goal -->
+  <div class="quiz-card" id="q2">
+    <p class="question-label">Question 2 of 3</p>
+    <h3>What is your main goal with music?</h3>
+    <div class="options">
+      <button class="option-btn" onclick="selectOption(this, 'goal', 'hobby')">
+        <span class="option-icon">🌿</span>
+        <span>I want to enjoy it as a personal hobby and stress relief</span>
+      </button>
+      <button class="option-btn" onclick="selectOption(this, 'goal', 'perform')">
+        <span class="option-icon">🎤</span>
+        <span>I want to perform at events, competitions, or recitals</span>
+      </button>
+      <button class="option-btn" onclick="selectOption(this, 'goal', 'professional')">
+        <span class="option-icon">🏆</span>
+        <span>I want to pursue music professionally or academically</span>
+      </button>
+    </div>
+    <div class="quiz-nav">
+      <button class="nav-btn back" onclick="prevQuestion(2)">← Back</button>
+      <button class="nav-btn next" id="next2" onclick="nextQuestion(2)" disabled>Next →</button>
+    </div>
+  </div>
+
+  <!-- Question 3: Instrument -->
+  <div class="quiz-card" id="q3">
+    <p class="question-label">Question 3 of 3</p>
+    <h3>Which instrument or area draws you the most?</h3>
+    <div class="options">
+      <button class="option-btn" onclick="selectOption(this, 'instrument', 'Keyboard')">
+        <span class="option-icon">🎹</span>
+        <span>Keyboard, I love harmony and layered sound</span>
+      </button>
+      <button class="option-btn" onclick="selectOption(this, 'instrument', 'Guitar')">
+        <span class="option-icon">🎸</span>
+        <span>Guitar, I want expressive, modern playing</span>
+      </button>
+      <button class="option-btn" onclick="selectOption(this, 'instrument', 'Violin')">
+        <span class="option-icon">🎻</span>
+        <span>Violin, I am drawn to precision and melody</span>
+      </button>
+      <button class="option-btn" onclick="selectOption(this, 'instrument', 'Veena')">
+        <span class="option-icon">🪕</span>
+        <span>Veena, I want to connect with classical tradition</span>
+      </button>
+      <button class="option-btn" onclick="selectOption(this, 'instrument', 'Singing')">
+        <span class="option-icon">🎙️</span>
+        <span>Singing, my voice is my instrument</span>
+      </button>
+    </div>
+    <div class="quiz-nav">
+      <button class="nav-btn back" onclick="prevQuestion(3)">← Back</button>
+      <button class="nav-btn next" id="next3" onclick="showResult()" disabled>See My Result →</button>
+    </div>
+  </div>
+
+  <!-- Result -->
+  <div id="result-card">
+    <div class="result-badge">Your Recommendation</div>
+    <h2 id="result-level"></h2>
+    <p class="result-instrument" id="result-instrument"></p>
+    <p id="result-description"></p>
+    <div class="result-actions">
+      <a href="courses.html" class="btn-primary">View Course Details</a>
+      <a href="contact.html" class="btn-primary">Book a Trial Class</a>
+      <button class="btn-secondary" onclick="retakeQuiz()">Retake Quiz</button>
+    </div>
+  </div>
+
+</section>
+
+<footer>© 2026 Lyra Academy</footer>
+<script src="script.js"></script>
+<script>
+  const answers = { exp: null, goal: null, instrument: null };
+
+  function selectOption(btn, key, value) {
+    // Deselect siblings
+    btn.closest('.options').querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    answers[key] = value;
+    // Enable next button for this question
+    const qNum = { exp: 1, goal: 2, instrument: 3 }[key];
+    document.getElementById('next' + qNum).disabled = false;
+  }
+
+  function nextQuestion(current) {
+    document.getElementById('q' + current).classList.remove('active');
+    document.getElementById('q' + (current + 1)).classList.add('active');
+    updateProgress(current + 1);
+  }
+
+  function prevQuestion(current) {
+    document.getElementById('q' + current).classList.remove('active');
+    document.getElementById('q' + (current - 1)).classList.add('active');
+    updateProgress(current - 1);
+  }
+
+  function updateProgress(step) {
+    const pct = ((step - 1) / 3) * 100;
+    document.getElementById('progressBar').style.width = pct + '%';
+  }
+
+  function showResult() {
+    // Hide last question
+    document.getElementById('q3').classList.remove('active');
+    document.getElementById('progressBar').style.width = '100%';
+
+    // Determine level
+    let level, description;
+    const { exp, goal } = answers;
+
+    if (exp === 'none') {
+      level = 'Beginner Level';
+      description = 'This is the ideal starting point for you. The Beginner program introduces rhythm, pitch recognition, basic posture, and foundational technique at a comfortable, encouraging pace. You will develop listening awareness and a genuine love for music before advancing further.';
+    } else if (exp === 'some' || (exp === 'trained' && goal === 'hobby')) {
+      level = 'Intermediate Level';
+      description = 'You have a foundation to build on — the Intermediate program is designed for exactly this stage. You will refine your technique, explore more complex compositions, and begin structured performance practice. Your existing experience will accelerate your growth here significantly.';
+    } else {
+      level = 'Advanced Level';
+      description = 'With your background and professional or performance goals, the Advanced program offers the depth and rigor you need. You will work closely with instructors on technique mastery, expressive interpretation, and performance readiness — shaping your distinct artistic identity.';
+    }
+
+    document.getElementById('result-level').textContent = level;
+    document.getElementById('result-instrument').textContent = '🎵 Recommended instrument: ' + answers.instrument;
+    document.getElementById('result-description').textContent = description;
+    document.getElementById('result-card').classList.add('active');
+  }
+
+  function retakeQuiz() {
+    // Reset everything
+    answers.exp = null; answers.goal = null; answers.instrument = null;
+    document.getElementById('result-card').classList.remove('active');
+    document.querySelectorAll('.quiz-card').forEach(c => c.classList.remove('active'));
+    document.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+    document.querySelectorAll('.nav-btn.next').forEach(b => b.disabled = true);
+    document.getElementById('q1').classList.add('active');
+    document.getElementById('progressBar').style.width = '0%';
+  }
+</script>
+</body>
+</html>

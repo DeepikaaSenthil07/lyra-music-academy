@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lyra Academy | Class Timetable</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="brand-bar">
+  <div class="brand-inner">
+    <h1>Lyra Academy</h1>
+    <p>Let the music live through you…</p>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="courses.html">Courses</a>
+        <a href="faculty.html">Faculty</a>
+        <a class="active" href="timetable.html">Timetable</a>
+        <a href="quiz.html">Find My Course</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="timetable-section">
+  <h2>Class Timetable</h2>
+  <p class="subtitle">View all weekly classes at a glance. Filter by instrument to find the sessions that suit you.</p>
+
+  <!-- Filter buttons -->
+  <div class="filter-bar">
+    <button class="filter-btn active" onclick="filterTable('all', this)">All Instruments</button>
+    <button class="filter-btn" onclick="filterTable('keyboard', this)">🎹 Keyboard</button>
+    <button class="filter-btn" onclick="filterTable('guitar', this)">🎸 Guitar</button>
+    <button class="filter-btn" onclick="filterTable('violin', this)">🎻 Violin</button>
+    <button class="filter-btn" onclick="filterTable('veena', this)">🪕 Veena</button>
+    <button class="filter-btn" onclick="filterTable('singing', this)">🎙️ Singing</button>
+  </div>
+
+  <!-- Timetable -->
+  <div class="tt-wrap">
+    <table class="timetable" id="mainTable">
+      <thead>
+        <tr>
+          <th>Time</th>
+          <th>Monday</th>
+          <th>Tuesday</th>
+          <th>Wednesday</th>
+          <th>Thursday</th>
+          <th>Friday</th>
+          <th>Saturday</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="time-col">8:00 – 9:00 AM</td>
+          <td class="cell-inner" data-inst="keyboard"><div class="class-chip chip-keyboard"><span class="chip-title">Keyboard</span><span class="chip-level">Beginner</span></div></td>
+          <td class="cell-inner" data-inst="singing"><div class="class-chip chip-singing"><span class="chip-title">Singing</span><span class="chip-level">Beginner</span></div></td>
+          <td class="cell-inner" data-inst="keyboard"><div class="class-chip chip-keyboard"><span class="chip-title">Keyboard</span><span class="chip-level">Beginner</span></div></td>
+          <td class="cell-inner" data-inst="veena"><div class="class-chip chip-veena"><span class="chip-title">Veena</span><span class="chip-level">Beginner</span></div></td>
+          <td class="cell-inner" data-inst="singing"><div class="class-chip chip-singing"><span class="chip-title">Singing</span><span class="chip-level">Beginner</span></div></td>
+          <td class="cell-inner" data-inst="guitar"><div class="class-chip chip-guitar"><span class="chip-title">Guitar</span><span class="chip-level">All Levels</span></div></td>
+        </tr>
+        <tr>
+          <td class="time-col">9:00 – 10:00 AM</td>
+          <td class="cell-inner" data-inst="violin"><div class="class-chip chip-violin"><span class="chip-title">Violin</span><span class="chip-level">Beginner</span></div></td>
+          <td class="cell-inner" data-inst="keyboard"><div class="class-chip chip-keyboard"><span class="chip-title">Keyboard</span><span class="chip-level">Intermediate</span></div></td>
+          <td class="cell-inner" data-inst="guitar"><div class="class-chip chip-guitar"><span class="chip-title">Guitar</span><span class="chip-level">Beginner</span></div></td>
+          <td class="cell-inner" data-inst="singing"><div class="class-chip chip-singing"><span class="chip-title">Singing</span><span class="chip-level">Intermediate</span></div></td>
+          <td class="cell-inner" data-inst="violin"><div class="class-chip chip-violin"><span class="chip-title">Violin</span><span class="chip-level">Intermediate</span></div></td>
+          <td class="cell-inner" data-inst="veena"><div class="class-chip chip-veena"><span class="chip-title">Veena</span><span class="chip-level">All Levels</span></div></td>
+        </tr>
+        <tr>
+          <td class="time-col">10:00 – 11:00 AM</td>
+          <td class="cell-inner" data-inst="veena"><div class="class-chip chip-veena"><span class="chip-title">Veena</span><span class="chip-level">Intermediate</span></div></td>
+          <td class="cell-inner" data-inst="guitar"><div class="class-chip chip-guitar"><span class="chip-title">Guitar</span><span class="chip-level">Intermediate</span></div></td>
+          <td class="cell-inner" data-inst="singing"><div class="class-chip chip-singing"><span class="chip-title">Singing</span><span class="chip-level">Advanced</span></div></td>
+          <td class="cell-inner" data-inst="keyboard"><div class="class-chip chip-keyboard"><span class="chip-title">Keyboard</span><span class="chip-level">Advanced</span></div></td>
+          <td class="cell-inner" data-inst="veena"><div class="class-chip chip-veena"><span class="chip-title">Veena</span><span class="chip-level">Advanced</span></div></td>
+          <td class="cell-inner" data-inst="violin"><div class="class-chip chip-violin"><span class="chip-title">Violin</span><span class="chip-level">All Levels</span></div></td>
+        </tr>
+        <tr>
+          <td class="time-col">4:00 – 5:00 PM</td>
+          <td class="cell-inner" data-inst="guitar"><div class="class-chip chip-guitar"><span class="chip-title">Guitar</span><span class="chip-level">Advanced</span></div></td>
+          <td class="cell-inner" data-inst="violin"><div class="class-chip chip-violin"><span class="chip-title">Violin</span><span class="chip-level">Advanced</span></div></td>
+          <td class="cell-inner" data-inst="keyboard"><div class="class-chip chip-keyboard"><span class="chip-title">Keyboard</span><span class="chip-level">Beginner</span></div></td>
+          <td class="cell-inner" data-inst="guitar"><div class="class-chip chip-guitar"><span class="chip-title">Guitar</span><span class="chip-level">Beginner</span></div></td>
+          <td class="cell-inner" data-inst="keyboard"><div class="class-chip chip-keyboard"><span class="chip-title">Keyboard</span><span class="chip-level">Intermediate</span></div></td>
+          <td class="cell-inner chip-empty">—</td>
+        </tr>
+        <tr>
+          <td class="time-col">5:00 – 6:00 PM</td>
+          <td class="cell-inner" data-inst="singing"><div class="class-chip chip-singing"><span class="chip-title">Singing</span><span class="chip-level">Advanced</span></div></td>
+          <td class="cell-inner" data-inst="veena"><div class="class-chip chip-veena"><span class="chip-title">Veena</span><span class="chip-level">Beginner</span></div></td>
+          <td class="cell-inner" data-inst="violin"><div class="class-chip chip-violin"><span class="chip-title">Violin</span><span class="chip-level">Beginner</span></div></td>
+          <td class="cell-inner" data-inst="singing"><div class="class-chip chip-singing"><span class="chip-title">Singing</span><span class="chip-level">Beginner</span></div></td>
+          <td class="cell-inner" data-inst="guitar"><div class="class-chip chip-guitar"><span class="chip-title">Guitar</span><span class="chip-level">Intermediate</span></div></td>
+          <td class="cell-inner chip-empty">—</td>
+        </tr>
+        <tr>
+          <td class="time-col">6:00 – 7:00 PM</td>
+          <td class="cell-inner" data-inst="keyboard"><div class="class-chip chip-keyboard"><span class="chip-title">Keyboard</span><span class="chip-level">Advanced</span></div></td>
+          <td class="cell-inner" data-inst="singing"><div class="class-chip chip-singing"><span class="chip-title">Singing</span><span class="chip-level">Intermediate</span></div></td>
+          <td class="cell-inner" data-inst="veena"><div class="class-chip chip-veena"><span class="chip-title">Veena</span><span class="chip-level">Intermediate</span></div></td>
+          <td class="cell-inner" data-inst="violin"><div class="class-chip chip-violin"><span class="chip-title">Violin</span><span class="chip-level">Advanced</span></div></td>
+          <td class="cell-inner" data-inst="veena"><div class="class-chip chip-veena"><span class="chip-title">Veena</span><span class="chip-level">Intermediate</span></div></td>
+          <td class="cell-inner chip-empty">—</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Legend -->
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:#4a90d9"></div> Keyboard</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#e08c30"></div> Guitar</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#d45080"></div> Violin</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#4caf50"></div> Veena</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#8e44ad"></div> Singing</div>
+  </div>
+  <div class="level-key">
+    <span>Beginner — foundational classes</span>
+    <span>·</span>
+    <span>Intermediate — structured progression</span>
+    <span>·</span>
+    <span>Advanced — mastery & performance</span>
+    <span>·</span>
+    <span>All Levels — open batch</span>
+  </div>
+
+  <!-- Info cards -->
+  <div class="info-cards">
+    <div class="info-card reveal">
+      <div class="ic-icon">📅</div>
+      <h3>Flexible Scheduling</h3>
+      <p>Morning and evening batches available on all weekdays to suit school, college, and working schedules.</p>
+    </div>
+    <div class="info-card reveal">
+      <div class="ic-icon">👥</div>
+      <h3>Small Batch Sizes</h3>
+      <p>Each class is limited to 6–8 students to ensure personalized attention and focused instruction from faculty.</p>
+    </div>
+    <div class="info-card reveal">
+      <div class="ic-icon">🎯</div>
+      <h3>Trial Class Available</h3>
+      <p>Not sure which slot works? Book a free trial class and experience our teaching style before enrolling.</p>
+    </div>
+    <div class="info-card reveal">
+      <div class="ic-icon">📋</div>
+      <h3>Custom Batches</h3>
+      <p>Need a different timing? Contact us — we arrange custom one-on-one or group sessions based on availability.</p>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="timetable-cta">
+    <p>Found a class that works for you? Book your free trial and we'll confirm your spot.</p>
+    <a href="contact.html">Book a Trial Class →</a>
+  </div>
+</section>
+
+<footer>© 2026 Lyra Academy</footer>
+<script src="script.js"></script>
+<script>
+  function filterTable(instrument, clickedBtn) {
+    // Update active button
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    clickedBtn.classList.add('active');
+
+    // Show/hide cells
+    document.querySelectorAll('.cell-inner[data-inst]').forEach(cell => {
+      if (instrument === 'all') {
+        cell.style.visibility = 'visible';
+        cell.style.opacity = '1';
+      } else if (cell.dataset.inst === instrument) {
+        cell.style.visibility = 'visible';
+        cell.style.opacity = '1';
+      } else {
+        cell.style.visibility = 'hidden';
+        cell.style.opacity = '0.15';
+      }
+    });
+  }
+</script>
+</body>
+</html>
