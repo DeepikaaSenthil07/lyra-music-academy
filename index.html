@@ -7,19 +7,35 @@
 </head>
 <body>
 
+<!-- ════════════════════════════════════════════════════
+     UPDATED HEADER — paste into ALL 7 HTML files
+     replacing the existing <header>...</header> block.
+     Only change class="active" to match the current page.
+     ════════════════════════════════════════════════════ -->
+
 <header class="brand-bar">
   <div class="brand-inner">
     <h1>Lyra Academy</h1>
     <p>Let the music live through you…</p>
-    <nav>
-        <a class="active" href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="courses.html">Courses</a>
-        <a href="faculty.html">Faculty</a>
-        <a href="timetable.html">Timetable</a>
-        <a href="quiz.html">Find My Course</a>
-        <a href="contact.html">Contact</a>
+
+    <!-- Hamburger button (visible only on mobile) -->
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <!-- Nav links — add class="active" to current page link -->
+    <nav class="nav-menu" id="navMenu">
+      <a class="active" href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="courses.html">Courses</a>
+      <a href="faculty.html">Faculty</a>
+      <a href="timetable.html">Timetable</a>
+      <a href="quiz.html">Find My Course</a>
+      <a href="contact.html">Contact</a>
     </nav>
+
   </div>
 </header>
 

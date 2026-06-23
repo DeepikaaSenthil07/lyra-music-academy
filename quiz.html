@@ -7,19 +7,35 @@
 </head>
 <body>
 
+<!-- ════════════════════════════════════════════════════
+     UPDATED HEADER — paste into ALL 7 HTML files
+     replacing the existing <header>...</header> block.
+     Only change class="active" to match the current page.
+     ════════════════════════════════════════════════════ -->
+
 <header class="brand-bar">
   <div class="brand-inner">
     <h1>Lyra Academy</h1>
     <p>Let the music live through you…</p>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="courses.html">Courses</a>
-        <a href="faculty.html">Faculty</a>
-        <a href="timetable.html">Timetable</a>
-        <a class="active" href="quiz.html">Find My Course</a>
-        <a href="contact.html">Contact</a>
+
+    <!-- Hamburger button (visible only on mobile) -->
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <!-- Nav links — add class="active" to current page link -->
+    <nav class="nav-menu" id="navMenu">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="courses.html">Courses</a>
+      <a href="faculty.html">Faculty</a>
+      <a href="timetable.html">Timetable</a>
+      <a class="active" href="quiz.html">Find My Course</a>
+      <a href="contact.html">Contact</a>
     </nav>
+
   </div>
 </header>
 
@@ -173,10 +189,10 @@
       description = 'This is the ideal starting point for you. The Beginner program introduces rhythm, pitch recognition, basic posture, and foundational technique at a comfortable, encouraging pace. You will develop listening awareness and a genuine love for music before advancing further.';
     } else if (exp === 'some' || (exp === 'trained' && goal === 'hobby')) {
       level = 'Intermediate Level';
-      description = 'You have a foundation to build on — the Intermediate program is designed for exactly this stage. You will refine your technique, explore more complex compositions, and begin structured performance practice. Your existing experience will accelerate your growth here significantly.';
+      description = 'You have a foundation to build on, the Intermediate program is designed for exactly this stage. You will refine your technique, explore more complex compositions, and begin structured performance practice. Your existing experience will accelerate your growth here significantly.';
     } else {
       level = 'Advanced Level';
-      description = 'With your background and professional or performance goals, the Advanced program offers the depth and rigor you need. You will work closely with instructors on technique mastery, expressive interpretation, and performance readiness — shaping your distinct artistic identity.';
+      description = 'With your background and professional or performance goals, the Advanced program offers the depth and rigor you need. You will work closely with instructors on technique mastery, expressive interpretation, and performance readiness shaping your distinct artistic identity.';
     }
 
     document.getElementById('result-level').textContent = level;

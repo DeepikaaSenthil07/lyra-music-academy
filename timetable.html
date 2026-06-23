@@ -7,19 +7,35 @@
 </head>
 <body>
 
+<!-- ════════════════════════════════════════════════════
+     UPDATED HEADER — paste into ALL 7 HTML files
+     replacing the existing <header>...</header> block.
+     Only change class="active" to match the current page.
+     ════════════════════════════════════════════════════ -->
+
 <header class="brand-bar">
   <div class="brand-inner">
     <h1>Lyra Academy</h1>
     <p>Let the music live through you…</p>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="courses.html">Courses</a>
-        <a href="faculty.html">Faculty</a>
-        <a class="active" href="timetable.html">Timetable</a>
-        <a href="quiz.html">Find My Course</a>
-        <a href="contact.html">Contact</a>
+
+    <!-- Hamburger button (visible only on mobile) -->
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <!-- Nav links — add class="active" to current page link -->
+    <nav class="nav-menu" id="navMenu">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="courses.html">Courses</a>
+      <a href="faculty.html">Faculty</a>
+      <a class="active" href="timetable.html">Timetable</a>
+      <a href="quiz.html">Find My Course</a>
+      <a href="contact.html">Contact</a>
     </nav>
+
   </div>
 </header>
 
@@ -119,13 +135,13 @@
     <div class="legend-item"><div class="legend-dot" style="background:#8e44ad"></div> Singing</div>
   </div>
   <div class="level-key">
-    <span>Beginner — foundational classes</span>
+    <span>Beginner: foundational classes</span>
     <span>·</span>
-    <span>Intermediate — structured progression</span>
+    <span>Intermediate: structured progression</span>
     <span>·</span>
-    <span>Advanced — mastery & performance</span>
+    <span>Advanced: mastery & performance</span>
     <span>·</span>
-    <span>All Levels — open batch</span>
+    <span>All Levels: open batch</span>
   </div>
 
   <!-- Info cards -->
@@ -138,7 +154,7 @@
     <div class="info-card reveal">
       <div class="ic-icon">👥</div>
       <h3>Small Batch Sizes</h3>
-      <p>Each class is limited to 6–8 students to ensure personalized attention and focused instruction from faculty.</p>
+      <p>Each class is limited to 6-8 students to ensure personalized attention and focused instruction from faculty.</p>
     </div>
     <div class="info-card reveal">
       <div class="ic-icon">🎯</div>
@@ -148,7 +164,7 @@
     <div class="info-card reveal">
       <div class="ic-icon">📋</div>
       <h3>Custom Batches</h3>
-      <p>Need a different timing? Contact us — we arrange custom one-on-one or group sessions based on availability.</p>
+      <p>Need a different timing? Contact us, we arrange custom one-on-one or group sessions based on availability.</p>
     </div>
   </div>
 

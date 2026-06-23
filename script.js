@@ -1,3 +1,4 @@
+/* ── Reveal on scroll ── */
 const reveals = document.querySelectorAll(".reveal");
 function revealOnScroll() {
   reveals.forEach(el => {
@@ -9,14 +10,28 @@ function revealOnScroll() {
 window.addEventListener("scroll", revealOnScroll);
 revealOnScroll();
 
+/* ── Hamburger menu (mobile) ── */
+const hamburger = document.getElementById("hamburger");
+const navMenu   = document.getElementById("navMenu");
+if (hamburger && navMenu) {
+  hamburger.addEventListener("click", () => {
+    navMenu.classList.toggle("open");
+  });
+  // Close menu when a nav link is clicked
+  navMenu.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => navMenu.classList.remove("open"));
+  });
+}
+
+/* ── Contact form ── */
 const form = document.getElementById("contactForm");
 if (form) {
   form.addEventListener("submit", async function (e) {
     e.preventDefault();
 
-    const name    = document.getElementById("name").value.trim();
-    const email   = document.getElementById("email").value.trim();
-    const phone   = document.getElementById("phone").value.trim();
+    const name  = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const phone = document.getElementById("phone").value.trim();
 
     if (!name || !email || !phone) {
       alert("Please fill in your name, email, and contact number.");
@@ -31,17 +46,17 @@ if (form) {
     btn.textContent = "Sending…";
     btn.disabled = true;
 
-    const SHEETS_URL = "https://script.google.com/macros/s/AKfycbxA0G7K59Vu9t2ENeoxtUSpak4u9SHz2fDtwuIbCaaKXIHZBiEHF2H7XyshoT9AaDby/exec";
+    // ── PASTE YOUR APPS SCRIPT URL BELOW (keep the quotes) ──
+    const SHEETS_URL = "https://script.google.com/macros/s/AKfycbxA0G7K59Vu9t2ENeoxtUSpak4u9SHz2fDtwuIbCaaKXIHZBiEHF2H7XyshoT9AaDby/exec"
+;
 
     try {
-      // 1. Send to Formspree → triggers email notification to you
       const emailRes = await fetch(form.action, {
         method: "POST",
         body: new FormData(form),
         headers: { Accept: "application/json" }
       });
 
-      // 2. Send to Google Sheets → saves the row silently
       await fetch(SHEETS_URL, {
         method: "POST",
         mode: "no-cors",
@@ -60,7 +75,6 @@ if (form) {
       } else {
         alert("Something went wrong. Please try again or email us directly.");
       }
-
     } catch (err) {
       alert("Network error. Please check your connection and try again.");
     }
